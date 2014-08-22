@@ -2,6 +2,8 @@ package centroservizi.infoporto.it.cservizi;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -36,9 +38,10 @@ public class NewsActivity extends Activity {
         textViewTitle.setText(title);
         textViewDescription.setText(description);
         textViewDate.setText(modification_date);
-        textViewText.setText(text);
 
-
+        Spanned spanned = Html.fromHtml(text);
+        Spanned spannedHtml = Html.fromHtml(spanned.toString());
+        textViewText.setText(spannedHtml);
     }
 
 
