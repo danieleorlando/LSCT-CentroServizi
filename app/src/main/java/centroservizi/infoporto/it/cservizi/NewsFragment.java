@@ -5,13 +5,13 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -38,8 +38,11 @@ public class NewsFragment extends Fragment {
     private List<News> newsList = new ArrayList<News>();
 
     private ListView listView;
+    private TextView textViewNoConnection;
     private NewsAdapter adapter;
     private ProgressBar progressBar;
+
+    private int statusCode;
 
     public static NewsFragment newInstance() {
         NewsFragment fragment = new NewsFragment();
@@ -58,6 +61,8 @@ public class NewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
+        textViewNoConnection = (TextView)view.findViewById(R.id.noconnection);
+        textViewNoConnection.setVisibility(View.GONE);
         listView = (ListView)view.findViewById(R.id.list);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -102,20 +107,23 @@ public class NewsFragment extends Fragment {
 
             try {
                 HttpResponse httpResponse = httpClient.execute(httpGet);
-                StringBuilder sb = inputStreamToString(httpResponse.getEntity().getContent());
-                JsonParser parser = new JsonParser();
-                JsonElement newsElement = parser.parse(sb.toString());
-                Gson gson = new Gson();
-                if (newsElement.isJsonObject()) {
-                    News news = gson.fromJson(newsElement, News.class);
-                    newsList.add(news);
-                } else if (newsElement.isJsonArray()) {
-                    Type projectListType = new TypeToken<List<News>>() {
-                    }.getType();
-                    newsList = gson.fromJson(newsElement, projectListType);
+                statusCode = httpResponse.getStatusLine().getStatusCode();
+                if (statusCode==200) {
+                    StringBuilder sb = inputStreamToString(httpResponse.getEntity().getContent());
+                    JsonParser parser = new JsonParser();
+                    JsonElement newsElement = parser.parse(sb.toString());
+                    Gson gson = new Gson();
+                    if (newsElement.isJsonObject()) {
+                        News news = gson.fromJson(newsElement, News.class);
+                        newsList.add(news);
+                    } else if (newsElement.isJsonArray()) {
+                        Type projectListType = new TypeToken<List<News>>() {
+                        }.getType();
+                        newsList = gson.fromJson(newsElement, projectListType);
+                    }
                 }
             } catch (Exception e) {
-                Log.v("E", e.getMessage());
+                statusCode = -1;
             }
             return null;
         }
@@ -123,9 +131,14 @@ public class NewsFragment extends Fragment {
         @Override
         protected void onPostExecute(Void unused) {
             progressBar.setVisibility(View.GONE);
-            adapter = new NewsAdapter(getActivity(), newsList);
-            listView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+            if (statusCode==200) {
+                adapter = new NewsAdapter(getActivity(), newsList);
+                listView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            } else {
+                textViewNoConnection.setVisibility(View.VISIBLE);
+                textViewNoConnection.setText("Error " + statusCode);
+            }
         }
     }
 
