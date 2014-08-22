@@ -2,12 +2,14 @@ package centroservizi.infoporto.it.cservizi;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -57,6 +59,23 @@ public class EventiFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_eventi, container, false);
         listView = (ListView)view.findViewById(R.id.list);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getActivity(),EventiActivity.class);
+                intent.putExtra("title",eventiList.get(i).getTitle());
+                intent.putExtra("description",eventiList.get(i).getDescription());
+                intent.putExtra("modification_date",eventiList.get(i).getModification_date());
+                intent.putExtra("contact_email",eventiList.get(i).getContact_email());
+                intent.putExtra("contact_name",eventiList.get(i).getContact_name());
+                intent.putExtra("contact_phone",eventiList.get(i).getContact_phone());
+                intent.putExtra("start",eventiList.get(i).getStart_date());
+                intent.putExtra("end",eventiList.get(i).getEnd_date());
+                intent.putExtra("event_url",eventiList.get(i).getEvent_url());
+                intent.putExtra("uid",eventiList.get(i).getUid());
+                startActivity(intent);
+            }
+        });
         progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
         return view;
     }
