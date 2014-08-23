@@ -14,5 +14,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_convenzioni">ConvenzioniActivity</string>
     <string name="title_activity_eventi">EventiActivity</string>
-
+    <string name="usaconvenzione">Usa convenzione</string>
+    <string name="attendere">Attendere</string>
+    <string name="convenzioneusata">Convenzione usata</string>
 </resources>

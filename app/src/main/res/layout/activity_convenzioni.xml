@@ -71,4 +71,11 @@
         android:textSize="16dp"
         android:layout_below="@id/textViewPhone"/>
 
+    <Button
+        android:id="@+id/use_agreement"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/textViewEmail"
+        android:text="@string/usaconvenzione"/>
+
 </RelativeLayout>
