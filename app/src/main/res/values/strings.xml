@@ -17,4 +17,6 @@
     <string name="usaconvenzione">Usa convenzione</string>
     <string name="attendere">Attendere</string>
     <string name="convenzioneusata">Convenzione usata</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

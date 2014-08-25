@@ -8,6 +8,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +18,8 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import centroservizi.infoporto.it.cservizi.model.Messaggi;
 
 
 public class MainActivity extends Activity
@@ -55,10 +58,15 @@ public class MainActivity extends Activity
             fragmentManager.beginTransaction()
                     .replace(R.id.container, EventiFragment.newInstance())
                     .commit();
+        } else if (position == 3) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, MessaggiFragment.newInstance())
+                    .commit();
         }
     }
 
     public void onSectionAttached(int number) {
+        Log.v("number",String.valueOf(number));
         switch (number) {
             case 1:
                 mTitle = getString(R.string.news);
@@ -69,7 +77,11 @@ public class MainActivity extends Activity
             case 3:
                 mTitle = getString(R.string.eventi);
                 break;
+            case 4:
+                mTitle = getString(R.string.messaggi);
+                break;
         }
+        Log.v("title", mTitle.toString());
     }
 
     public void restoreActionBar() {
