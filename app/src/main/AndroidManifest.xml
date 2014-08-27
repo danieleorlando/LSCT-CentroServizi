@@ -40,6 +40,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
+        <activity
+            android:name=".InviaMessaggioActivity"
+            android:label="@string/title_activity_invia_messaggio" >
+        </activity>
     </application>
 
     <!-- Permission - Internet Connect -->

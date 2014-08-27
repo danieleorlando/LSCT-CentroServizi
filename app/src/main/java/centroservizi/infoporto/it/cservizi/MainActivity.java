@@ -66,7 +66,6 @@ public class MainActivity extends Activity
     }
 
     public void onSectionAttached(int number) {
-        Log.v("number",String.valueOf(number));
         switch (number) {
             case 1:
                 mTitle = getString(R.string.news);
@@ -81,7 +80,6 @@ public class MainActivity extends Activity
                 mTitle = getString(R.string.messaggi);
                 break;
         }
-        Log.v("title", mTitle.toString());
     }
 
     public void restoreActionBar() {

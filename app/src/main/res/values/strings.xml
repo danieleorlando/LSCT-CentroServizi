@@ -18,5 +18,13 @@
     <string name="attendere">Attendere</string>
     <string name="convenzioneusata">Convenzione usata</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nuovomessaggio">Nuovo messaggio</string>
     <string name="inviamessaggio">Invia messaggio</string>
+    <string name="title_activity_invia_messaggio">InviaMessaggioActivity</string>
+    <string name="oggetto">Oggetto</string>
+    <string name="testo">Testo</string>
+    <string name="invioincorso">Invio in corso</string>
+    <string name="messaggioinviato">Messaggio inviato</string>
+    <string name="erroreinvio">Errore invio</string>
+    <string name="verificadati">Verifica i dati</string>
 </resources>
