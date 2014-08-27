@@ -74,6 +74,7 @@ public class ConvenzioniFragment extends Fragment {
                 intent.putExtra("start",convenzioniList.get(i).getStart());
                 intent.putExtra("end",convenzioniList.get(i).getEnd());
                 intent.putExtra("uid",convenzioniList.get(i).getUid());
+                intent.putExtra("likes",convenzioniList.get(i).getLikes());
                 startActivity(intent);
             }
         });

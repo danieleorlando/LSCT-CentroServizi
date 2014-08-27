@@ -7,13 +7,15 @@ public class News {
     String uid;
     String modification_date;
     String description;
+    String likes;
 
-    public News(String text, String title, String uid, String modification_date, String description) {
+    public News(String text, String title, String uid, String modification_date, String description, String likes) {
         this.text = text;
         this.title = title;
         this.uid = uid;
         this.modification_date = modification_date;
         this.description = description;
+        this.likes = likes;
     }
 
     public News() {
@@ -57,5 +59,13 @@ public class News {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getLikes() {
+        return likes;
+    }
+
+    public void setLikes(String likes) {
+        this.likes = likes;
     }
 }

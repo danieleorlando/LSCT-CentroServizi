@@ -22,6 +22,7 @@ public class EventiActivity extends Activity {
     private String contact_phone;
     private String start_date;
     private String uid;
+    private String likes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class EventiActivity extends Activity {
             end_date = extras.getString("end");
             event_url = extras.getString("event_url");
             uid = extras.getString("uid");
+            likes = extras.getString("likes");
         }
         setContentView(R.layout.activity_eventi);
 
@@ -50,6 +52,7 @@ public class EventiActivity extends Activity {
         TextView textViewStart = (TextView)findViewById(R.id.textViewStart);
         TextView textViewEnd = (TextView)findViewById(R.id.textViewEnd);
         TextView textViewUrl = (TextView)findViewById(R.id.textViewUrl);
+        TextView textViewLikes = (TextView)findViewById(R.id.textViewLikes);
 
         textViewTitle.setText(title);
         textViewDate.setText(modification_date);
@@ -59,6 +62,7 @@ public class EventiActivity extends Activity {
         textViewStart.setText(start_date);
         textViewEnd.setText(end_date);
         textViewUrl.setText(event_url);
+        textViewLikes.setText(likes + " likes");
 
         Spanned spanned = Html.fromHtml(description);
         Spanned spannedHtml = Html.fromHtml(spanned.toString());

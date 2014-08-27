@@ -33,6 +33,7 @@ public class ConvenzioniActivity extends Activity {
     private String start;
     private String end;
     private String uid;
+    private String likes;
 
     private int statusCode;
 
@@ -54,6 +55,7 @@ public class ConvenzioniActivity extends Activity {
             start = extras.getString("start");
             end = extras.getString("end");
             uid = extras.getString("uid");
+            likes = extras.getString("likes");
         }
         setContentView(R.layout.activity_convenzioni);
 
@@ -65,6 +67,7 @@ public class ConvenzioniActivity extends Activity {
         TextView textViewName = (TextView)findViewById(R.id.textViewName);
         TextView textViewStart = (TextView)findViewById(R.id.textViewStart);
         TextView textViewEnd = (TextView)findViewById(R.id.textViewEnd);
+        TextView textViewLikes = (TextView)findViewById(R.id.textViewLikes);
 
         button = (Button)findViewById(R.id.use_agreement);
 
@@ -75,6 +78,7 @@ public class ConvenzioniActivity extends Activity {
         textViewName.setText(contact_name);
         textViewStart.setText(start);
         textViewEnd.setText(end);
+        textViewLikes.setText(likes + " likes");
 
         Spanned spanned = Html.fromHtml(description);
         Spanned spannedHtml = Html.fromHtml(spanned.toString());

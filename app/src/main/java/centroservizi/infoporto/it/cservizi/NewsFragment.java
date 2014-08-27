@@ -73,6 +73,7 @@ public class NewsFragment extends Fragment {
                 intent.putExtra("modification_date",newsList.get(i).getModification_date());
                 intent.putExtra("text",newsList.get(i).getText());
                 intent.putExtra("uid",newsList.get(i).getUid());
+                intent.putExtra("likes",newsList.get(i).getLikes());
                 startActivity(intent);
             }
         });

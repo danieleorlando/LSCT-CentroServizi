@@ -12,8 +12,9 @@ public class Eventi {
     String contact_phone;
     String start_date;
     String uid;
+    String likes;
 
-    public Eventi(String event_url, String end_date, String modification_date, String title, String description, String contact_email, String contact_name, String contact_phone, String start_date, String uid) {
+    public Eventi(String event_url, String end_date, String modification_date, String title, String description, String contact_email, String contact_name, String contact_phone, String start_date, String uid, String likes) {
         this.event_url = event_url;
         this.end_date = end_date;
         this.modification_date = modification_date;
@@ -24,6 +25,7 @@ public class Eventi {
         this.contact_phone = contact_phone;
         this.start_date = start_date;
         this.uid = uid;
+        this.likes = likes;
     }
 
     public Eventi() {
@@ -108,5 +110,13 @@ public class Eventi {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getLikes() {
+        return likes;
+    }
+
+    public void setLikes(String likes) {
+        this.likes = likes;
     }
 }

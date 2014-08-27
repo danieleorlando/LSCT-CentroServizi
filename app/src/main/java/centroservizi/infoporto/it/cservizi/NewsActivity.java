@@ -15,6 +15,7 @@ public class NewsActivity extends Activity {
     private String modification_date;
     private String text;
     private String uid;
+    private String likes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class NewsActivity extends Activity {
             modification_date = extras.getString("modification_date");
             text = extras.getString("text");
             uid = extras.getString("uid");
+            likes = extras.getString("likes");
         }
 
         setContentView(R.layout.activity_news);
@@ -34,10 +36,12 @@ public class NewsActivity extends Activity {
         TextView textViewDescription = (TextView)findViewById(R.id.textViewDescription);
         TextView textViewDate = (TextView)findViewById(R.id.textViewDate);
         TextView textViewText = (TextView)findViewById(R.id.textViewText);
+        TextView textViewLike = (TextView)findViewById(R.id.textViewLikes);
 
         textViewTitle.setText(title);
         textViewDescription.setText(description);
         textViewDate.setText(modification_date);
+        textViewLike.setText(likes + " likes");
 
         Spanned spanned = Html.fromHtml(text);
         Spanned spannedHtml = Html.fromHtml(spanned.toString());

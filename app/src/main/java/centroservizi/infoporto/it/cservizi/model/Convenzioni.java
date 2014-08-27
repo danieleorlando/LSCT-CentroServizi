@@ -14,8 +14,9 @@ public class Convenzioni {
     String contact_name;
     String contact_phone;
     String uid;
+    String likes;
 
-    public Convenzioni(String end, String description, String modification_date, String title, String start, String contact_email, String contact_name, String contact_phone, String uid) {
+    public Convenzioni(String end, String description, String modification_date, String title, String start, String contact_email, String contact_name, String contact_phone, String uid, String likes) {
         this.end = end;
         this.description = description;
         this.modification_date = modification_date;
@@ -25,6 +26,7 @@ public class Convenzioni {
         this.contact_name = contact_name;
         this.contact_phone = contact_phone;
         this.uid = uid;
+        this.likes = likes;
     }
 
     public Convenzioni(){
@@ -101,5 +103,13 @@ public class Convenzioni {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getLikes() {
+        return likes;
+    }
+
+    public void setLikes(String likes) {
+        this.likes = likes;
     }
 }

@@ -73,6 +73,7 @@ public class EventiFragment extends Fragment {
                 intent.putExtra("end",eventiList.get(i).getEnd_date());
                 intent.putExtra("event_url",eventiList.get(i).getEvent_url());
                 intent.putExtra("uid",eventiList.get(i).getUid());
+                intent.putExtra("likes",eventiList.get(i).getLikes());
                 startActivity(intent);
             }
         });
