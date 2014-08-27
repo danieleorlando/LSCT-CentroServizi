@@ -42,7 +42,7 @@
         </activity>
         <activity
             android:name=".InviaMessaggioActivity"
-            android:label="@string/title_activity_invia_messaggio" >
+            android:label="@string/nuovomessaggio" >
         </activity>
     </application>
 
